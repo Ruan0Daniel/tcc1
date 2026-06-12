@@ -1,0 +1,66 @@
+{
+  "name": "codejudge",
+  "displayName": "Code Judge",
+  "description": "A Visual Studio Code extension that integrates with an external API to compile, execute, analyze, and optimize code, providing automated feedback and insights directly within the editor.",
+  "version": "1.0.0",
+  "author": "Ruan",
+  "publisher": "ruan",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.120.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Education"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codejudge-sidebar",
+          "title": "Code Judge",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "codejudge-sidebar": [
+        {
+          "type": "webview",
+          "id": "codejudge.mainView",
+          "name": "Code Judge",
+          "icon": ""
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Code Judge",
+      "properties": {
+        "codejudge.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "URL base do servidor do CodeJudge. Se o aluno precisar mudar o servidor do laboratório da faculdade, basta alterar este campo."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.120.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  }
+}

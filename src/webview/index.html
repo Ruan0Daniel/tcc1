@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeJudge</title>
+    <style>
+        /* {{STYLE_PLACEHOLDER}} */
+    </style>
+</head>
+
+<body>
+    <label for="statement">
+        Enunciado do Exercício (Opcional)
+        <span class="info-icon" onclick="toggleInfo('info-statement')" title="Clique para mais informações">i</span>
+    </label>
+    <div id="info-statement" class="info-content">
+        Insira aqui o <strong>objetivo ou descrição</strong> do desafio. Com esse contexto, a IA do CodeJudge será capaz
+        de entregar análises muito mais precisas e alinhadas ao que o exercício realmente pede.
+    </div>
+    <textarea id="statement"
+        placeholder="Ex: Faça um programa que leia dois números inteiros e imprima a soma deles..."></textarea>
+
+    <label for="language">
+        Linguagem de Programação
+        <span class="info-icon" onclick="toggleInfo('info-language')" title="Clique para mais informações">i</span>
+    </label>
+    <div id="info-language" class="info-content">
+        Indique a <strong>linguagem exata</strong> em que o código aberto foi escrito para que o compilador interno não
+        gere falsos positivos.
+    </div>
+    <select id="language">
+        <option value="java" selected>Java</option>
+        <option value="c">C</option>
+    </select>
+
+    <label for="action">
+        Ação Desejada
+        <span class="info-icon" onclick="toggleInfo('info-action')" title="Clique para mais informações">i</span>
+    </label>
+    <div id="info-action" class="info-content">
+        <span class="highlight-term">✦ Executar:</span> Roda seu código em tempo real. Não precisa de arquivos extras
+        para rodar, mas se houver anexos, ele fará uma <strong>bateria de testes</strong>. Se o código quebrar, a IA
+        assume trazendo um feedback intuitivo para guiar você na resolução.<br><br>
+        <span class="highlight-term">✦ Compilar:</span> Realiza apenas a verificação de <strong>sintaxe e
+            estrutura</strong>. Caso a compilação falhe, a IA entra em ação fornecendo um feedback pedagógico para
+        ajudar você a compreender o erro por conta própria e se auto-aprimorar.<br><br>
+        <span class="highlight-term">✦ Analisar:</span> Aciona diretamente a Inteligência Artificial para avaliar a
+        <strong>qualidade do código</strong>, trazendo reflexões sobre boas práticas e caminhos para você refatorar sua
+        lógica.<br><br>
+        <span class="highlight-term">✦ Otimizar:</span> A IA foca puramente em <strong>performance</strong>, oferecendo
+        insights construtivos sobre como tornar seu algoritmo mais rápido e com menor consumo de memória.
+    </div>
+    <select id="action">
+        <option value="execute" selected>Executar Código</option>
+        <option value="compile">Compilar Código</option>
+        <option value="analysis">Analisar Código</option>
+        <option value="optimize">Otimizar Código</option>
+    </select>
+
+    <div id="testFilesContainer" class="box-container">
+        <div class="collapsible-header" id="testConfigHeader">
+            <span>Configuração de Testes</span>
+            <span id="testConfigIcon">▼</span>
+        </div>
+
+        <div id="testConfigContent" class="collapsible-content">
+            <label style="margin-top: 12px;">
+                Arquivo de Entrada (Opcional)
+                <span class="info-icon" onclick="toggleInfo('info-input')" title="Clique para mais informações">i</span>
+            </label>
+            <div id="info-input" class="info-content">
+                Precisa obrigatoriamente ser um arquivo <strong>.txt</strong>.<br><br>
+                Simula o que você <strong>digitaria no terminal</strong>. O sistema lerá cada linha na ordem do seu
+                código.<br><br>
+                Exemplo de arquivo para ler dois números:
+                <div class="code-example">
+                    10<br>
+                    25
+                </div>
+            </div>
+            <div class="file-upload-wrapper">
+                <label for="inputFile" class="custom-file-upload">Selecionar Arquivo</label>
+                <span id="inputFileName" class="file-name">Nenhum arquivo</span>
+                <button id="removeInputBtn" class="remove-btn">Remover</button>
+                <input type="file" id="inputFile" accept=".txt">
+            </div>
+            <div id="inputPreview" class="file-preview"></div>
+
+            <label style="margin-top: 16px;">
+                Arquivo de Saída (Opcional)
+                <span class="info-icon" onclick="toggleInfo('info-output')"
+                    title="Clique para mais informações">i</span>
+            </label>
+            <div id="info-output" class="info-content">
+                Precisa obrigatoriamente ser um arquivo <strong>.txt</strong>.<br><br>
+                É o <strong>gabarito exato</strong> do que o programa deveria imprimir na tela. O texto precisa ser
+                <em>idêntico</em> ao esperado para que o teste seja aprovado.<br><br>
+                Exemplo de gabarito esperado:
+                <div class="code-example">
+                    A soma dos valores é: 35
+                </div>
+            </div>
+            <div class="file-upload-wrapper">
+                <label for="outputFile" class="custom-file-upload">Selecionar Arquivo</label>
+                <span id="outputFileName" class="file-name">Nenhum arquivo</span>
+                <button id="removeOutputBtn" class="remove-btn">Remover</button>
+                <input type="file" id="outputFile" accept=".txt">
+            </div>
+            <div id="outputPreview" class="file-preview"></div>
+        </div>
+    </div>
+
+    <button id="processBtn" class="process-btn">Processar</button>
+
+    <div id="promptsContainer" class="box-container" style="margin-top: 16px;">
+        <div class="collapsible-header" id="promptsHeader">
+            <span>Prompts</span>
+            <span id="promptsIcon">▶</span>
+        </div>
+        <div id="promptsContent" class="collapsible-content" style="display: none; padding-top: 12px;">
+            <select id="promptSelect">
+                <option value="">Carregando prompts...</option>
+            </select>
+            <button id="viewPromptBtn" class="view-prompt-btn">Abrir Prompt Selecionado</button>
+        </div>
+    </div>
+
+    <script>
+        // {{SCRIPT_PLACEHOLDER}}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+:root {
+    --bg-main: var(--vscode-sideBar-background);
+    --bg-input: var(--vscode-input-background);
+    --bg-test-box: var(--vscode-editorWidget-background);
+    --border-color: var(--vscode-input-border, rgba(128, 128, 128, 0.35));
+    --accent-primary: var(--vscode-button-background);
+    --accent-hover: var(--vscode-button-hoverBackground);
+    --text-main: var(--vscode-foreground);
+    --text-muted: var(--vscode-descriptionForeground);
+    --info-bg: var(--vscode-editorHoverWidget-background);
+    --info-border: var(--vscode-editorHoverWidget-border);
+    --info-text: var(--vscode-editorHoverWidget-foreground);
+    --danger-color: var(--vscode-errorForeground);
+}
+
+body {
+    font-family: var(--vscode-font-family), -apple-system, sans-serif;
+    padding: 16px 12px;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--text-main);
+}
+
+.info-icon {
+    margin-left: 8px;
+    cursor: pointer;
+    background-color: var(--text-muted);
+    color: var(--bg-main);
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.info-icon:hover {
+    opacity: 1;
+    background-color: var(--accent-primary);
+}
+
+.info-content {
+    display: none;
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: var(--info-bg);
+    border: 1px solid var(--info-border);
+    border-left: 3px solid var(--accent-primary);
+    border-radius: 6px;
+    font-size: 11.5px;
+    color: var(--info-text);
+    line-height: 1.6;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.info-content.active {
+    display: block;
+}
+
+.highlight-term {
+    color: var(--accent-primary);
+    font-weight: bold;
+    font-size: 12.5px;
+}
+
+.code-example {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 6px 10px;
+    border-radius: 4px;
+    margin-top: 6px;
+    font-family: monospace;
+    border-left: 2px solid var(--text-muted);
+}
+
+textarea,
+select {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--bg-input);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 32px;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23999999%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+    background-size: 10px auto;
+}
+
+textarea:focus,
+select:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+}
+
+.box-container {
+    background-color: var(--bg-test-box);
+    padding: 16px;
+    border-radius: 6px;
+    margin-top: 16px;
+    border: 1px dashed var(--border-color);
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.collapsible-header {
+    font-size: 13px;
+    color: var(--accent-primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    user-select: none;
+    margin-bottom: 8px;
+}
+
+.collapsible-content {
+    display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+.custom-file-upload {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+    margin: 0;
+    transition: background-color 0.2s;
+}
+
+.custom-file-upload:hover {
+    background-color: var(--border-color);
+}
+
+.remove-btn {
+    background-color: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    display: none;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover {
+    background-color: var(--danger-color);
+    color: #ffffff;
+}
+
+.file-name {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
+}
+
+.file-preview {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 8px;
+    font-size: 11.5px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    display: none;
+    max-height: 120px;
+    overflow-y: auto;
+    color: var(--text-main);
+    border-left: 2px solid var(--accent-primary);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button.process-btn {
+    width: 100%;
+    background-color: var(--accent-primary);
+    color: var(--vscode-button-foreground);
+    border: none;
+    margin-top: 24px;
+    cursor: pointer;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+button.process-btn:hover {
+    background-color: var(--accent-hover);
+}
+
+button.process-btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    background-color: var(--text-muted);
+    color: var(--bg-main);
+}
+
+button.view-prompt-btn {
+    width: 100%;
+    background-color: transparent;
+    color: var(--accent-primary);
+    border: 1px solid var(--accent-primary);
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+button.view-prompt-btn:hover {
+    background-color: var(--accent-primary);
+    color: var(--vscode-button-foreground);
+}
