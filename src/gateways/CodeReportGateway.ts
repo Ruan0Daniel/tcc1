@@ -34,6 +34,8 @@ export class CodeReportGateway implements CodeReportGatewayInterface{
             throw new Error(`HTTP ${response.status}`);
         }
 
+        //console.log(response.json());
+
         return await response.json();
     }
 }
